@@ -44,7 +44,7 @@ document.onkeyup = function(event) {
     //if same letter is chosen
     for (var i = 0; i < guesses.length; i++) {
         if (guesses[i] === userGuess) {
-          return;
+          return; //kills the function.
         }}
     //if correct answer is chosen.
     if(userGuess === answer){
@@ -58,7 +58,7 @@ document.onkeyup = function(event) {
         lives--;
         guesses.push(userGuess);
     }
-    //pushes used letters into an array. After 9x adds a loss.     
+    //pushes used letters into an array to print later. After 9x adds a loss.     
     if (guesses.length === 10){
         loses++;
         lives = 9;
