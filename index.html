@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Shadows+Into+Light" rel="stylesheet">
     <title>Psychic Game</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
-
+<!-- head end, body start -->
 <body>
 	<h1>The Psychic Game</h1>
 <hr>
@@ -22,10 +21,7 @@
 	<p><span id='yourLives'></span></p>
 <br>
     <p><span id="yourGuesses"></span></p>
-<br>
-    <span id='valite'></span>
-
-
+<!--  -->
 <script type="text/javascript">
 //variables
 var alphabet = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
@@ -38,7 +34,7 @@ var loses = 0;
 //randomize the answer
 randomLetter = (Math.floor(Math.random() * alphabet.length));
 answer = alphabet[randomLetter];
-//on key press.
+//on key press function begins here.
 document.onkeyup = function(event) {
     var userGuess = event.key;
     //if same letter is chosen
@@ -64,14 +60,16 @@ document.onkeyup = function(event) {
         lives = 9;
         guesses = [''];
     }
-//prints answer on screen
+//prints answer on screen.
 document.getElementById("yourLoses").innerHTML = "Loses: " + loses;
 document.getElementById("yourWins").innerHTML = "Wins: " + wins;
 document.getElementById("yourLives").innerHTML = "Guesses left: " + lives;
 document.getElementById("yourGuesses").innerHTML = "Your guesses so far: " + guesses.join(' ');
 console.log(answer);
 }
+//Function ends.
 </script>
+<!--  -->
 </body>
-
+<!--  -->
 </html>
