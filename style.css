@@ -21,6 +21,9 @@ hr{
     margin: 0;
     padding: 0;
 }
+hr + p{
+    font-size: 36px;
+}
 h1{
     font-family: 'Dancing Script', cursive;
     color: antiquewhite;
