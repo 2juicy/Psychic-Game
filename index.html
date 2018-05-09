@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Shadows+Into+Light" rel="stylesheet">
     <title>Psychic Game</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<!-- head end, body start -->
 <body>
 	<h1>The Psychic Game</h1>
 <hr>
@@ -22,58 +21,6 @@
 <br>
     <p><span id="yourGuesses"></span></p>
 <!--  -->
-<script type="text/javascript">
-//variables
-var alphabet = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
-var randomLetter = 0;
-var answer = "";
-var guesses = [''];
-var lives = 9;
-var wins = 0;
-var loses = 0;
-//function to check letters
-//randomize the answer
-randomLetter = (Math.floor(Math.random() * alphabet.length));
-answer = alphabet[randomLetter];
-//on key press function begins here.
-document.onkeyup = function(event) {
-    var userGuess = event.key;
-    //if same letter is chosen
-    for (var i = 0; i < guesses.length; i++) {
-        if (guesses[i] === userGuess) {
-            return; //kills the function.
-        }}
-    //checks if input is part of alphabet
-for (var i = 0; i < alphabet.length; i++) {   
-    if (alphabet[i] === userGuess) {
-    //if correct answer is chosen.
-        if(userGuess === answer){
-            wins++;
-            lives = 9;
-            guesses = [''];
-            randomLetter = (Math.floor(Math.random() * alphabet.length));
-            answer = alphabet[randomLetter];    
-    //if incorrect answer is chosen.
-        } else {
-            lives--;
-            guesses.push(userGuess);
-        }
-    //pushes used letters into an array to print later. After 9x adds a loss.     
-        if (guesses.length === 10){
-            loses++;
-            lives = 9;
-            guesses = [''];
-        }
-//prints answer on screen.
-document.getElementById("yourLoses").innerHTML = "Loses: " + loses;
-document.getElementById("yourWins").innerHTML = "Wins: " + wins;
-document.getElementById("yourLives").innerHTML = "Guesses left: " + lives;
-document.getElementById("yourGuesses").innerHTML = "Your guesses so far: " + guesses.join(' ');
-console.log(answer);
-}}}
-//Function ends.
-</script>
-<!--  -->
+<script type="text/javascript" src='javascript/game.js'></script>
 </body>
-<!--  -->
 </html>
