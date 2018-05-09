@@ -3,8 +3,33 @@
     color: white;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
-
-#userInput{
-    text-transform: uppercase;
+body > p{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 32px;    
+    text-shadow: -1px -1px 1px #aaa,
+             0px 4px 1px rgba(0,0,0,0.5),
+             4px 4px 5px rgba(0,0,0,0.7),
+             0px 0px 7px rgba(0,0,0,0.4);
+}
+hr{
+    display: block;
+    height: 1px;
+    border:0;
+    border-top: 1px solid #ccc;
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-family: 'Dancing Script', cursive;
+    color: antiquewhite;
+    font-size: 40px;
+}
+#yourGuesses{
+    color: antiquewhite;
+    text-shadow: -1px -1px 1px #aaa,
+             0px 4px 1px rgba(0,0,0,0.5),
+             4px 4px 5px rgba(0,0,0,0.7),
+             0px 0px 7px rgba(0,0,0,0.4);
 }
