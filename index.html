@@ -22,6 +22,8 @@
 	<p><span id='yourLives'></span></p>
 <br>
     <p><span id="yourGuesses"></span></p>
+<br>
+    <span id='valite'></span>
 
 
 <script type="text/javascript">
@@ -33,24 +35,30 @@ var guesses = [''];
 var lives = 9;
 var wins = 0;
 var loses = 0;
-
 //randomize the answer
 randomLetter = (Math.floor(Math.random() * alphabet.length));
 answer = alphabet[randomLetter];
 //on key press.
 document.onkeyup = function(event) {
     var userGuess = event.key;
+    //if same letter is chosen
+    for (var i = 0; i < guesses.length; i++) {
+        if (guesses[i] === userGuess) {
+          return;
+        }}
+    //if correct answer is chosen.
     if(userGuess === answer){
         wins++;
         lives = 9;
         guesses = [''];
         randomLetter = (Math.floor(Math.random() * alphabet.length));
-        answer = alphabet[randomLetter];
+        answer = alphabet[randomLetter];    
+    //if incorrect answer is chosen.
     } else {
         lives--;
         guesses.push(userGuess);
     }
-    //pushes used letters into an array, may try sets in future. After 9x adds a loss.     
+    //pushes used letters into an array. After 9x adds a loss.     
     if (guesses.length === 10){
         loses++;
         lives = 9;
