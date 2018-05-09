@@ -1,64 +1,69 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="http://html5-templates.com/" />
-    <title>HTML5 Page Layout Template</title>
-    <meta name="description" content="Simple HTML5 Page layout template with header, footer, sidebar etc.">
+
+    <title>Psychic Game</title>
+
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
 
 <body>
-	<header>
-		<div id="logo"><img src="http://html5-templates.com/logo.png">HTML5 Layout</div>
-		<nav>  
-			<ul>
-				<li><a href="/">Home</a>
-				<li><a href="http://html-css-js.com/">HTML</a>
-				<li><a href="http://html-css-js.com/css/code/">CSS</a>
-				<li><a href="http://htmlcheatsheet.com/js/">JS</a>
-			</ul>
-		</nav>
-	</header>
-	<section>
-		<strong>Demonstration of a simple page layout using HTML5 tags: header, nav, section, main, article, aside, footer, address.</strong>
-	</section>
-	<section id="pageContent">
-		<main role="main">
-			<article>
-				<h2>Stet facilis ius te</h2>
-				<p>Lorem ipsum dolor sit amet, nonumes voluptatum mel ea, cu case ceteros cum. Novum commodo malorum vix ut. Dolores consequuntur in ius, sale electram dissentiunt quo te. Cu duo omnes invidunt, eos eu mucius fabellas. Stet facilis ius te, quando voluptatibus eos in. Ad vix mundi alterum, integre urbanitas intellegam vix in.</p>
-			</article>
-			<article>
-				<h2>Illud mollis moderatius</h2>
-				<p>Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.</p>
-			</article>
-			<article>
-				<h2>Ex ignota epicurei quo</h2>
-				<p>Quo debet vivendo ex. Qui ut admodum senserit partiendo. Id adipiscing disputando eam, sea id magna pertinax concludaturque. Ex ignota epicurei quo, his ex doctus delenit fabellas, erat timeam cotidieque sit in. Vel eu soleat voluptatibus, cum cu exerci mediocritatem. Malis legere at per, has brute putant animal et, in consul utamur usu.</p>
-			</article>
-			<article>
-				<h2>His at autem inani volutpat</h2>
-				<p>Te has amet modo perfecto, te eum mucius conclusionemque, mel te erat deterruisset. Duo ceteros phaedrum id, ornatus postulant in sea. His at autem inani volutpat. Tollit possit in pri, platonem persecuti ad vix, vel nisl albucius gloriatur no.</p>
-			</article>
-		</main>
-		<aside>
-			<div></div>
-			<div></div>
-			<div></div>
-		</aside>
-	</section>
-	<footer>
-		<p>&copy; You can copy and edit and publish this template but please leave a link to our website | <a href="http://html5-templates.com/" target="_blank" rel="nofollow">HTML5 Templates</a></p>
-		<address>
-			Contact: <a href="mailto:me@htmlg.com">Mail me</a>
-		</address>
-	</footer>
+	<h1>The Psychic Game</h1>
+<br>
+	<p>Guess which letter I'm thinking of, press any key on your keyboard to begin game.</p>
+<br>
+	<p><span id='yourWins'></span></p>
+<br>
+	<p><span id='yourLoses'></span> </p>
+<br>
+	<p><span id='yourLives'></span></p>
+<br>
+    <p><span id="yourGuesses"></span></p>
 
 
+<script type="text/javascript">
+//variables
+var alphabet = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
+var randomLetter = 0;
+var answer = "";
+var guesses = [''];
+var lives = 9;
+var wins = 0;
+var loses = 0;
+
+//randomize the answer
+randomLetter = (Math.floor(Math.random() * alphabet.length));
+answer = alphabet[randomLetter];
+//on key press.
+document.onkeyup = function(event) {
+    var userGuess = event.key;
+    if(userGuess === answer){
+        wins++;
+        lives = 9;
+        guesses = [''];
+        randomLetter = (Math.floor(Math.random() * alphabet.length));
+        answer = alphabet[randomLetter];
+    } else {
+        lives--;
+        guesses.push(userGuess);
+    }
+    //pushes used letters into an array, may try sets in future. After 9x adds a loss.     
+    if (guesses.length === 10){
+        loses++;
+        lives = 9;
+        guesses = [''];
+    }
+//prints answer on screen
+document.getElementById("yourLoses").innerHTML = "Loses: " + loses;
+document.getElementById("yourWins").innerHTML = "Wins: " + wins;
+document.getElementById("yourLives").innerHTML = "Guesses left: " + lives;
+document.getElementById("yourGuesses").innerHTML = "Your guesses so far: " + guesses.join(' ');
+console.log(answer);
+}
+</script>
 </body>
 
 </html>
