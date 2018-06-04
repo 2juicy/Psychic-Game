@@ -1,42 +1,43 @@
 //variables
-var alphabet = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
-var randomLetter = 0;
-var answer = "";
-var guesses = [''];
+const alphabet = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
+guesses = new Array;
 var lives = 9;
 var wins = 0;
 var loses = 0;
+function resetGame(){
+    lives = 9;
+    guesses = [];
+    randomLetter = (Math.floor(Math.random() * alphabet.length));
+    answer = alphabet[randomLetter];
+}
 //randomize the answer
-randomLetter = (Math.floor(Math.random() * alphabet.length));
-answer = alphabet[randomLetter];
+var randomLetter = (Math.floor(Math.random() * alphabet.length));
+var answer = alphabet[randomLetter];
 //on key press function begins here.
 document.onkeyup = function(event) {
-    var userGuess = event.key;
+    let userGuess = event.key;
     //if same letter is chosen
-    for (var i = 0; i < guesses.length; i++) {
+    for (let i = 0; i < guesses.length; i++) {
         if (guesses[i] === userGuess) {
             return; //kills the function.
         }}
     //checks if input is part of alphabet, will only run if input is valid.
-for (var i = 0; i < alphabet.length; i++) {   
+for (let i = 0; i < alphabet.length; i++) {   
     if (alphabet[i] === userGuess) {
     //if correct answer is chosen.
         if(userGuess === answer){
             wins++;
-            lives = 9;
-            guesses = [''];
-            randomLetter = (Math.floor(Math.random() * alphabet.length));
-            answer = alphabet[randomLetter];    
+            resetGame();  
     //if incorrect answer is chosen.
         } else {
             lives--;
             guesses.push(userGuess);
+            console.log(guesses);
         }
     //pushes used letters into an array to print later. After 9x adds a loss.     
-        if (guesses.length === 10){
+        if (guesses.length === 9){
             loses++;
-            lives = 9;
-            guesses = [''];
+            resetGame();
         }
 //prints answer on screen.
 document.getElementById("yourLoses").innerHTML = "Loses: " + loses;
